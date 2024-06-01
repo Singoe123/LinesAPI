@@ -1,5 +1,4 @@
-FROM mongo:latest
+FROM mongo:7.0.11
 
 COPY ./init.js /docker-entrypoint-initdb.d/
 COPY ./docs.js /mongo-queries/
-RUN chmod +x /docker-entrypoint-initdb.d/init.js
