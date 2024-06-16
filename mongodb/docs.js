@@ -1,4 +1,21 @@
+// Insert auth and create new user
+
+use("admin")
+
+db.auth("123", "123")
+
 use("lines")
+
+db.createUser({
+  user: "lines",
+  pwd: "lines",
+  roles: [
+    {
+      role: "readWrite",
+      db: "lines"
+    }
+  ]
+})
 
 // Insert test documents in the "users" collection
 db.users.insertMany([
