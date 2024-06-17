@@ -1,4 +1,12 @@
 services:
+  api:
+    build: ./api
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+    environment:
+      - NODE_ENV=production
   mongodb:
     build: ./mongodb
     container_name: mongodb

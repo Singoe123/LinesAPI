@@ -1,9 +1,6 @@
 console.log('starting script');
 
-try{
-
-  
-  use('lines');
+use('lines');
 
 db.createCollection("users", {
   validator: {
@@ -16,7 +13,8 @@ db.createCollection("users", {
           pattern: "^[1-9a-zA-Z_]+$",
           description: "must be a string and contain only alphanumerics and underscores",
           minLength: 4,
-          maxLength: 15
+          maxLength: 15,
+          unique: true
         },
         name: {
           bsonType: "string",
@@ -26,7 +24,8 @@ db.createCollection("users", {
         email: {
           bsonType: "string",
           pattern: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
-          description: "must be a string and match the email pattern"
+          description: "must be a string and match the email pattern",
+          unique: true
         },
         password: {
           bsonType: "string",
@@ -214,9 +213,6 @@ db.followers.createIndex({ follower: 1 });
 db.followers.createIndex({ following: 1 });
 db.followers.createIndex({ follower: 1, following: 1 });
 db.followers.createIndex({ follow_date: -1 });
-} catch (e) {
-  console.log(e);
-}
 
 console.log('finished script');
 
