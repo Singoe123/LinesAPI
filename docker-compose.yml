@@ -1,4 +1,14 @@
 services:
+  nginx:
+    image: nginx:1.26.1
+    ports:
+      - 85:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - react
+      - node
+    container_name: nginx
   react:
     build: ./app
     ports:
