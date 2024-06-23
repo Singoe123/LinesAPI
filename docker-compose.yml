@@ -1,8 +1,16 @@
 services:
+  react:
+    build: ./app
+    ports:
+      - 3001:3000
+    container_name: react
+    depends_on:
+      - node
   node:
     build: ./api
     ports:
       - 3000:3000
+    container_name: node
     depends_on:
       - mongodb
     environment:
